@@ -51,7 +51,7 @@ const SideMenu = ({ activeMenu }) => {
     <div className="w-64 p-6 h-full flex flex-col lg:border-r lg:border-gray-200">
       <div className="flex flex-col items-center mb-8">
         <div className="w-20 h-20 rounded-full bg-gray-100 overflow-hidden mb-4 border-2 border-blue-200">
-          <img
+           <img
             src={currentUser?.profileImageUrl || null}
             alt="Profile Image"
             className="w-full h-full object-cover"
