@@ -42,7 +42,7 @@ const app = express()
 // Middleware to handle cors
 app.use(
   cors({
-    origin: process.env.FRONT_END_URL || "http://localhost:5174",
+    origin: process.env.FRONT_END_URL || "https://tracking-and-managing-project-task.onrender.com",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
