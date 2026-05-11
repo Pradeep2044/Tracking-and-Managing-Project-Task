@@ -2,10 +2,10 @@ import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
-import dsn from "dns";
+import dsn from "dns"
 import cookieParser from "cookie-parser"
 import path from "path"
-import fs from "fs";
+import fs from "fs"
 import authRoutes from "./routes/auth.route.js"
 import userRoutes from "./routes/user.route.js"
 import taskRoutes from "./routes/task.route.js"
@@ -91,3 +91,10 @@ app.use(express.static(path.join(_dirname, "/frontend/dist")))
 app.use((req, res) => {
   res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
 })
+
+
+const uploadPath = path.join(__dirname, "uploads")
+
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true })
+}
