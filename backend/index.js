@@ -5,7 +5,7 @@ import mongoose from "mongoose"
 import dsn from "dns";
 import cookieParser from "cookie-parser"
 import path from "path"
-
+import fs from "fs";
 import authRoutes from "./routes/auth.route.js"
 import userRoutes from "./routes/user.route.js"
 import taskRoutes from "./routes/task.route.js"
@@ -64,7 +64,11 @@ app.use("/api/reports", reportRoutes)
 
 
 
+const uploadPath = "uploads";
 
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+}
 
 // serve static files from "uploads" folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
