@@ -12,6 +12,9 @@ import taskRoutes from "./routes/task.route.js"
 import reportRoutes from "./routes/report.route.js"
 import { fileURLToPath } from "url"
 
+
+
+
 //change dns
  dsn.setServers(["1.1.1.1","8.8.8.8"])
 
@@ -30,6 +33,11 @@ mongoose
   })
 
 const app = express()
+
+
+ const _dirname = path.resolve();
+
+
 
 // Middleware to handle cors
 app.use(
@@ -54,6 +62,10 @@ app.use("/api/users", userRoutes)
 app.use("/api/tasks", taskRoutes)
 app.use("/api/reports", reportRoutes)
 
+
+
+
+
 // serve static files from "uploads" folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
@@ -67,4 +79,11 @@ app.use((err, req, res, next) => {
     statusCode,
     message,
   })
+})
+
+
+app.use(express.static(path.join(_dirname, "/frontend/dist")))
+
+app.use((req, res) => {
+  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
 })
