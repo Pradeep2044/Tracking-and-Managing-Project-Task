@@ -10,6 +10,9 @@ import PrivateRoute from "./routes/PrivateRoute"
 import UserDashboard from "./pages/user/UserDashboard"
 import TaskDetails from "./pages/user/TaskDetails"
 import MyTasks from "./pages/user/MyTasks"
+import { useSelector } from "react-redux"
+
+import toast, { Toaster } from "react-hot-toast"
 
 const App = () => {
   return (
@@ -35,11 +38,27 @@ const App = () => {
           </Route>
 
           {/* Default Route */}
-          <Route path="/" element={<Root />} />
+       <Route path="/" element={<Root />} />
         </Routes>
       </BrowserRouter>
 
+      <Toaster />
     </div>
   )
 }
+
 export default App
+
+const Root = () => {
+  const { currentUser } = useSelector((state) => state.user)
+
+  if (!currentUser) {
+    return <Navigate to={"/login"} />
+  }
+
+  return currentUser.role === "admin" ? (
+    <Navigate to={"/admin/dashboard"} />
+  ) : (
+    <Navigate to={"/user/dashboard"} />
+  )
+}

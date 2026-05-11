@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import dsn from "dns";
 import cookieParser from "cookie-parser"
 import path from "path"
 
@@ -10,6 +11,9 @@ import userRoutes from "./routes/user.route.js"
 import taskRoutes from "./routes/task.route.js"
 import reportRoutes from "./routes/report.route.js"
 import { fileURLToPath } from "url"
+
+//change dns
+ dsn.setServers(["1.1.1.1","8.8.8.8"])
 
 dotenv.config()
 
