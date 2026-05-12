@@ -64,11 +64,6 @@ app.use("/api/reports", reportRoutes)
 
 
 
-const uploadPath = "uploads";
-
-if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath, { recursive: true });
-}
 
 // serve static files from "uploads" folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
@@ -91,3 +86,9 @@ app.use(express.static(path.join(_dirname, "/frontend/dist")))
 app.use((req, res) => {
   res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
 })
+
+const uploadPath = path.join(__dirname, "uploads")
+
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+}
