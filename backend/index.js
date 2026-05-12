@@ -87,7 +87,7 @@ app.use((req, res) => {
   res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
 })
 
-const uploadPath = path.join(__dirname, "uploads")
+const uploadPath ="uploads";
 
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath, { recursive: true });
