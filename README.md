@@ -12,9 +12,9 @@ https://tracking-and-managing-project-task.onrender.com
 Create a `.env` file inside the `backend` directory and add the following:
 
 ```env
-PORT=5000
+PORT=3000
 
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=mongodb+srv://rinku50605_db_user:VZ9JGFgzHu4jpPZa@cluster0.aoddkji.mongodb.net/?appName=Cluster0
 
 JWT_SECRET=your_secret_key
 
